@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using CommandLine;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ZoneModel.Services.Options;
+using ZoneModel.Model;
+using ZoneModel.Model.Validation;
 
 namespace ZoneModel.Tests.Tests
 {
@@ -12,66 +9,23 @@ namespace ZoneModel.Tests.Tests
     public class ValidatorTests : TestBase
     {
         [TestMethod]
+        [ExpectedException(typeof(BadZoneDefinitionException))]
         public void TestValidatorThrowsOnEmptyInput()
         {
-            
+            var model = new RootModel();
+            model.Validate();
         }
 
         [TestMethod]
-        public void TestBasicFileArgs()
+        public void TestValidatorPassesSamples()
         {
-            var args = new List<string>();
-            args.Add("-f");
-            args.Add("Some file");
-
-            var msr = new ManualResetEvent(false);
-
-            var signalled = false;
-
-            Parser.Default.ParseArguments<CommandLineOptions>(args)
-                .WithParsed<CommandLineOptions>(o =>
-                {
-                    Assert.IsTrue(o.File == "Some file");
-                    if (!string.IsNullOrWhiteSpace(o.File))
-                    {
-                        signalled = true;
-                        msr.Set();
-                        Console.WriteLine($"File sent: -f {o.File}");
-
-                    }
-                    else
-                    {
-
-                    }
-                });
-
-            msr.WaitOne(TimeSpan.FromSeconds(2));
-
-            Assert.IsTrue(signalled);
-        }
-
-
-        [TestMethod]
-        public void TestNoVerboseArgs()
-        {
-            var args = new List<string>();
-            
-
-            var msr = new ManualResetEvent(false);
-
-            var signalled = false;
-
-            Parser.Default.ParseArguments<CommandLineOptions>(args)
-                .WithParsed<CommandLineOptions>(o =>
-                {
-                    signalled = true;
-                    msr.Set();
-                    Console.WriteLine($"File empty");
-                });
-
-            msr.WaitOne(TimeSpan.FromSeconds(2));
-
-            Assert.IsFalse(signalled);
+            var model = new RootModel();
+            var sampleRule = Samples.NetworkRuleSample("myId");
+            var sampleZone = Samples.ZoneExample("zoneId");
+            model.Rules = new List<Rule> { sampleRule };
+            model.Zones = new List<Zone> { sampleZone };
+            model.ZoneGroup = "AZoneGroup";
+            model.Validate();
         }
     }
 }
