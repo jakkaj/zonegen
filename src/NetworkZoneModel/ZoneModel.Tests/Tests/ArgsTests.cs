@@ -12,10 +12,11 @@ namespace ZoneModel.Tests.Tests
     public class ArgsTests : TestBase
     {
         [TestMethod]
-        public void TestVerboseArgs()
+        public void TestFileArgs()
         {
             var args = new List<string>();
-            args.Add("--verbose");
+            args.Add("--file");
+            args.Add("Some file");
 
             var msr = new ManualResetEvent(false);
 
@@ -24,17 +25,17 @@ namespace ZoneModel.Tests.Tests
             Parser.Default.ParseArguments<CommandLineOptions>(args)
                 .WithParsed<CommandLineOptions>(o =>
                 {
-                    if (o.Verbose)
+                    Assert.IsTrue(o.File == "Some file");
+                    if (!string.IsNullOrWhiteSpace(o.File))
                     {
                         signalled = true;
                         msr.Set();
-                        Console.WriteLine($"Verbose output enabled. Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example! App is in Verbose mode!");
+                        Console.WriteLine($"File sent: -f {o.File}");
+                        
                     }
                     else
                     {
-                        Console.WriteLine($"Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example!");
+                        
                     }
                 });
 
@@ -44,10 +45,11 @@ namespace ZoneModel.Tests.Tests
         }
 
         [TestMethod]
-        public void TestBasicVerboseArgs()
+        public void TestBasicFileArgs()
         {
             var args = new List<string>();
-            args.Add("-v");
+            args.Add("-f");
+            args.Add("Some file");
 
             var msr = new ManualResetEvent(false);
 
@@ -56,17 +58,17 @@ namespace ZoneModel.Tests.Tests
             Parser.Default.ParseArguments<CommandLineOptions>(args)
                 .WithParsed<CommandLineOptions>(o =>
                 {
-                    if (o.Verbose)
+                    Assert.IsTrue(o.File == "Some file");
+                    if (!string.IsNullOrWhiteSpace(o.File))
                     {
                         signalled = true;
                         msr.Set();
-                        Console.WriteLine($"Verbose output enabled. Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example! App is in Verbose mode!");
+                        Console.WriteLine($"File sent: -f {o.File}");
+
                     }
                     else
                     {
-                        Console.WriteLine($"Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example!");
+
                     }
                 });
 
@@ -80,7 +82,7 @@ namespace ZoneModel.Tests.Tests
         public void TestNoVerboseArgs()
         {
             var args = new List<string>();
-            args.Add("");
+            
 
             var msr = new ManualResetEvent(false);
 
@@ -89,24 +91,14 @@ namespace ZoneModel.Tests.Tests
             Parser.Default.ParseArguments<CommandLineOptions>(args)
                 .WithParsed<CommandLineOptions>(o =>
                 {
-                    if (o.Verbose)
-                    {
-                        
-                        Console.WriteLine($"Verbose output enabled. Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example! App is in Verbose mode!");
-                    }
-                    else
-                    {
-                        signalled = true;
-                        msr.Set();
-                        Console.WriteLine($"Current Arguments: -v {o.Verbose}");
-                        Console.WriteLine("Quick Start Example!");
-                    }
+                    signalled = true;
+                    msr.Set();
+                    Console.WriteLine($"File empty");
                 });
 
             msr.WaitOne(TimeSpan.FromSeconds(2));
 
-            Assert.IsTrue(signalled);
+            Assert.IsFalse(signalled);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ZoneModel.Services.Options
 {
     public class CommandLineOptions
     {
-        [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
-        public bool Verbose { get; set; }
+        [Option('f', "file", Required = true, HelpText = "Set file path of the zone model directory structure")]
+        public string File { get; set; }
     }
 }
