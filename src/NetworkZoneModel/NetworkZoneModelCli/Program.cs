@@ -1,6 +1,7 @@
 ﻿using NetworkZoneModelCli.Validation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace NetworkZoneModelCli
@@ -18,6 +19,10 @@ namespace NetworkZoneModelCli
             var rulePath = root + "/rule";
             var zonePath = root + "/zone";
             var outputFilePath = "result.json";
+            // sample ids
+            var sampleRuleId = "ruleid";
+            var sampleZoneId = "zoneid";
+            var sampleOutputPath = Directory.GetCurrentDirectory();
 
             var rules = FileParser.ParseAllInDir<NetworkRule>(rulePath);
             var zones = FileParser.ParseAllInDir<Zone>(zonePath);
@@ -47,10 +52,15 @@ namespace NetworkZoneModelCli
             var writer = new FileWriter();
             await writer.WriteToJsonFile(zoneModel, outputFilePath, replace: true);
             Console.WriteLine($"Wrote ZoneModel to file {outputFilePath}");
-            
-            // write a sample
-            
 
+            // make some sample classes
+            var sampleRule = Samples.NetworkRuleSample(sampleRuleId);
+            var sampleZone = Samples.ZoneExample(sampleZoneId);
+            // write a sample
+
+            await writer.WriteToYamlFile(sampleZone, sampleOutputPath);
+            await writer.WriteToYamlFile(sampleRule, sampleOutputPath);
+            Console.WriteLine("Wrote sample files");
             Console.ReadKey();
         }
     }

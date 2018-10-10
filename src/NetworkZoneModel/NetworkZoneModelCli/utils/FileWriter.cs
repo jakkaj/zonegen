@@ -15,21 +15,28 @@ namespace NetworkZoneModelCli
         {
             var json = JsonConvert.SerializeObject(model);
             await WriteTextToFile(path, json, replace);
-
         }
 
-        public async Task WriteToYamlFile(Zone zone, string path, bool replace = false)
+        public async Task WriteToYamlFile(Zone zone, string directoryPath, bool replace = false)
         {
-            var serializer = new SerializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
-            var yaml = serializer.Serialize(zone);
-            await WriteTextToFile(path, yaml, replace);
+            if (Directory.Exists(directoryPath))
+            {
+                var path = Path.Join(directoryPath, $"{zone.Id}.yaml");
+                var serializer = new SerializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+                var yaml = serializer.Serialize(zone);
+                await WriteTextToFile(path, yaml, replace);
+            } else throw new ArgumentException($"{directoryPath} is not a directory");
         }
 
-        public async Task WriteToYamlFile(NetworkRule rule, string path, bool replace = false)
+        public async Task WriteToYamlFile(NetworkRule rule, string directoryPath, bool replace = false)
         {
-            var serializer = new SerializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
-            var yaml = serializer.Serialize(rule);
-            await WriteTextToFile(path, yaml, replace);
+            if(Directory.Exists(directoryPath))
+            {
+                var path = Path.Join(directoryPath, $"{rule.Id}.yaml");
+                var serializer = new SerializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+                var yaml = serializer.Serialize(rule);
+                await WriteTextToFile(path, yaml, replace);
+            } else throw new ArgumentException($"{directoryPath} is not a directory");
         }
 
         private static async Task WriteTextToFile(string path, string json, bool replace)

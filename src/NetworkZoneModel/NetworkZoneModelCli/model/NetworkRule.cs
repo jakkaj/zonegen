@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
+using YamlDotNet.Serialization;
 
 namespace NetworkZoneModelCli
 {
@@ -8,6 +9,7 @@ namespace NetworkZoneModelCli
     public class NetworkRule : Rule 
     {
         [JsonProperty("ports")]
+        [YamlMember(Order = 5)]
         public List<int> Ports {get;set;}
     }
 }
