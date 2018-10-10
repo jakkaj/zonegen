@@ -2,3 +2,6 @@
 from: internet-facing
 to: internet
 isBidirectional: true
+ports:
+  - 22
+  - 80

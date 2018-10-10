@@ -27,7 +27,7 @@ namespace ZoneModel.Services.Zones
             // probably will need to iterate in each of these subdirs
             var root = Path.Join(fullPath, $"{zoneGroup}/{region}/{environment}");
             var rulePath = root + "/rule";
-            var zonePath = root + "/zone";
+            var zonePath = root + "/zones.yaml";
             var outputFilePath = "result.json";
             // sample ids
             var sampleRuleId = "ruleid";
@@ -35,7 +35,7 @@ namespace ZoneModel.Services.Zones
             var sampleOutputPath = Directory.GetCurrentDirectory();
 
             var rules = FileParser.ParseAllInDir<NetworkRule>(rulePath);
-            var zones = FileParser.ParseAllInDir<Zone>(zonePath);
+            var zones = FileParser.ParseZonesFile(zonePath);
 
             Console.WriteLine($"Got {rules.Count} rules");
             Console.WriteLine($"Got {zones.Count} zones");

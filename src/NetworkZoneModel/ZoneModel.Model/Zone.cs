@@ -11,11 +11,8 @@ namespace ZoneModel.Model
     {
         [JsonProperty("id")]
         public string Id { get; set; } // internet-facing
-        [JsonProperty("parent")]
-        public Zone Parent { get; set; }
-        [JsonProperty("chidren")]
-        public IList<Zone> Children { get; set; } // zones are hierarchial, and a type of edge
-
-
+        
+        [JsonProperty("index")]
+        public int Index { get; set; }
     }
 }

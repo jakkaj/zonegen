@@ -9,16 +9,12 @@ namespace ZoneModel.Services.Utils
 {
     public class FileParser
     {
-        public static Zone ParseZoneFile (string filePath) {
+        public static List<Zone> ParseZonesFile (string filePath) {
 
             var text = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<Zone>(text);
-        }
+            var deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
 
-        public static NetworkRule ParseNetworkRuleFile(string path)
-        {
-            var text = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<NetworkRule>(text);
+            return deserializer.Deserialize<List<Zone>>(text);
         }
 
         public static List<T> ParseAllInDir<T>(string dirPath) where T: class
