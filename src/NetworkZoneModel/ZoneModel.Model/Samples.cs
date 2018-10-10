@@ -12,6 +12,7 @@ namespace ZoneModel.Model
             To = "to-this-zone",
             Id = id,
             IsBidirectional = true,
+            Description = "Describe the rule",
             Ports = new List<int> { 22, 80 }
         };
 

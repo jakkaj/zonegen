@@ -9,7 +9,7 @@ namespace ZoneModel.Model
     public class NetworkRule : Rule 
     {
         [JsonProperty("ports")]
-        [YamlMember(Order = 5)]
+        [YamlMember(Order = 6)]
         public List<int> Ports {get;set;}
     }
 }
