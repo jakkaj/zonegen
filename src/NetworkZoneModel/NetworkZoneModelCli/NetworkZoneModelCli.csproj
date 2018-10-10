@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ZoneModel.Model\ZoneModel.Model.csproj" />
+    <ProjectReference Include="..\ZoneModel.Services\ZoneModel.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

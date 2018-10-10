@@ -14,5 +14,9 @@ namespace ZoneModel.Tests
             Services = AppServices.Services;
         }
 
+        public static T Resolve<T>()
+        {
+            return Services.GetService<T>();
+        }
     }
 }

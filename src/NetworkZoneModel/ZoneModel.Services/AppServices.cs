@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ZoneModel.Services.Contracts;
+using ZoneModel.Services.Zones;
 
 namespace ZoneModel.Services
 {
@@ -21,7 +23,7 @@ namespace ZoneModel.Services
             var services = new ServiceCollection();
 
             var serviceProvider = services
-                
+                .AddSingleton<IZoneModelParser, ZoneModelParser>()
                 .BuildServiceProvider();
 
             Services = serviceProvider;

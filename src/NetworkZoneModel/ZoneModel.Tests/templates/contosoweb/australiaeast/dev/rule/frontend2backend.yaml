@@ -1,0 +1,4 @@
+﻿id: frontend2backend
+from: internet-facing
+to: backend
+isBidirectional: true

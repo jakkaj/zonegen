@@ -21,6 +21,28 @@
     <ProjectReference Include="..\ZoneModel.Services\ZoneModel.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="templates\contosoweb\australiasoutheast\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="templates\contosoweb\australiaeast\dev\rule\bank-access.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\contosoweb\australiaeast\dev\rule\frontend2backend.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\contosoweb\australiaeast\dev\rule\open-internet.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\contosoweb\australiaeast\dev\zone\backend.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="templates\contosoweb\australiaeast\dev\zone\internet-facing.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 	
 
 </Project>
