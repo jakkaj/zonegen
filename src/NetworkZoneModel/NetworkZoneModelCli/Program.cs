@@ -13,7 +13,7 @@ namespace NetworkZoneModelCli
             var region = "australiaeast";
             var environment = "dev";
             // probably will need to iterate in each of these subdirs
-            var root = $"templates/${zoneGroup}/${region}/${environment}";
+            var root = $"templates/{zoneGroup}/{region}/{environment}";
             var rulePath = root + "/rule";
             var zonePath = root + "/zone";
 
