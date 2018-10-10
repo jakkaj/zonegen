@@ -9,9 +9,9 @@ namespace NetworkZoneModelCli.Validation
     {
         public static void Validate(this ZoneModel model)
         {
-            if (string.IsNullOrEmpty(model.Id))
+            if (string.IsNullOrEmpty(model.ZoneGroup))
             {
-                throw new BadZoneDefinitionException("Zone Model Id cannot be null or empty");
+                throw new BadZoneDefinitionException("Zone Model ZoneGroup cannot be null or empty");
             }
             if(model.Zones == null || !model.Zones.Any())
             {
