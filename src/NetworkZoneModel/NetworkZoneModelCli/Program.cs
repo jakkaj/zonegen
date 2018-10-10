@@ -1,12 +1,13 @@
 ﻿using NetworkZoneModelCli.Validation;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NetworkZoneModelCli
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Starting...");
             var zoneGroup = "contosoweb";
@@ -16,6 +17,7 @@ namespace NetworkZoneModelCli
             var root = $"templates/{zoneGroup}/{region}/{environment}";
             var rulePath = root + "/rule";
             var zonePath = root + "/zone";
+            var outputFilePath = "result.json";
 
             var rules = FileParser.ParseAllInDir<NetworkRule>(rulePath);
             var zones = FileParser.ParseAllInDir<Zone>(zonePath);
@@ -40,6 +42,14 @@ namespace NetworkZoneModelCli
             {
                 Console.WriteLine(ex.Message);
             }
+
+            // write to file
+            var writer = new FileWriter();
+            await writer.WriteToJsonFile(zoneModel, outputFilePath, replace: true);
+            Console.WriteLine($"Wrote ZoneModel to file {outputFilePath}");
+            
+            // write a sample
+            
 
             Console.ReadKey();
         }
