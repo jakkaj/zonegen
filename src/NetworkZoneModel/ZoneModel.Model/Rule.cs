@@ -9,14 +9,21 @@ namespace ZoneModel.Model
         [JsonProperty("id")]
         [YamlMember(Order = 1)]
         public string Id {get;set;}
+
         [JsonProperty("from")]
         [YamlMember(Order = 2)]
         public string From {get;set;} // this is a zone id
+
         [JsonProperty("to")]
         [YamlMember(Order = 3)]
         public string To {get;set;} // this is a zone id
+
         [JsonProperty("isBidirectional")]
         [YamlMember(Order = 4)]
         public bool IsBidirectional {get;set;} // set true for a second rule in reverse direction
+
+        [JsonProperty("description")]
+        [YamlMember(Order = 5)]
+        public string Description { get; set; }
     }
 }
