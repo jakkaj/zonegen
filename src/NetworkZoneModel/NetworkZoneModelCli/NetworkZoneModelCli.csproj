@@ -49,10 +49,7 @@
     <None Update="templates\contosoweb\australiaeast\dev\rule\open-internet.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="templates\contosoweb\australiaeast\dev\zone\backend.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="templates\contosoweb\australiaeast\dev\zone\internet-facing.yaml">
+    <None Update="templates\contosoweb\australiaeast\dev\zones.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

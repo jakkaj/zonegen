@@ -2,3 +2,6 @@
 from: backend
 to: OneCloud.australiaeast.hub.bank
 isBidirectional: true
+ports:
+  - 22
+  - 80
