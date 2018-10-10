@@ -40,7 +40,7 @@ namespace NetworkZoneModelCli
 
                
 
-            Console.WriteLine("Wrote sample files");
+            
             Console.ReadKey();
         }
 
