@@ -11,11 +11,18 @@ namespace ZoneModel.Model.Validation
         {
             if (string.IsNullOrEmpty(model.ZoneGroup))
             {
-                throw new BadZoneDefinitionException("Zone Model ZoneGroup cannot be null or empty");
+                throw new ZoneModelDefinitionException("Zone Model ZoneGroup cannot be null or empty");
             }
-            if(model.Zones == null || !model.Zones.Any())
+            if(model.Regions == null || !model.Regions.Any())
             {
-                throw new BadZoneDefinitionException("Zone List cannot be empty");
+                throw new ZoneModelDefinitionException("Region List cannot be empty");
+            }
+            if(model.Regions.Any( r => r == null || 
+                r.Environments == null || 
+                string.IsNullOrEmpty(r.Id) || 
+                r.Environments.Count == 0))
+            {
+                throw new ZoneModelDefinitionException($"Environment has badly configured Region");
             }
         }
     }

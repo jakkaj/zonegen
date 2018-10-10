@@ -9,6 +9,12 @@ namespace ZoneModel.Services.Utils
 {
     public class FileParser
     {
+        public static RootModel LoadRootModelFromConfig(string path)
+        {
+            var text = File.ReadAllText(path);
+            var deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+            return deserializer.Deserialize<RootModel>(text);
+        }
         public static List<Zone> ParseZonesFile (string filePath) {
 
             var text = File.ReadAllText(filePath);

@@ -26,7 +26,7 @@ namespace NetworkZoneModelCli
             if (opts.Item1 == ParseType.Error)
             {
                 Console.WriteLine("Options error, exiting");
-                Environment.Exit(1);
+                System.Environment.Exit(1);
                 return;
             }
 

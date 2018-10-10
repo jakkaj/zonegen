@@ -9,7 +9,7 @@ namespace ZoneModel.Tests.Tests
     public class ValidatorTests : TestBase
     {
         [TestMethod]
-        [ExpectedException(typeof(BadZoneDefinitionException))]
+        [ExpectedException(typeof(ZoneModelDefinitionException))]
         public void TestValidatorThrowsOnEmptyInput()
         {
             var model = new RootModel();
@@ -22,8 +22,20 @@ namespace ZoneModel.Tests.Tests
             var model = new RootModel();
             var sampleRule = Samples.NetworkRuleSample("myId");
             var sampleZone = Samples.ZoneExample("zoneId");
-            model.Rules = new List<Rule> { sampleRule };
-            model.Zones = new List<Zone> { sampleZone };
+            model.Regions = new List<Region>();
+            model.Regions.Add(new Region() {
+                Id = "regionId",
+                Environments = new List<Environment>
+                {
+                    new Environment() {
+                        Zones = new List<Zone>{sampleZone},
+                        Rules = new List<Rule>{sampleRule},
+                        Id = "someId"
+                    }
+
+                }
+            });
+
             model.ZoneGroup = "AZoneGroup";
             model.Validate();
         }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ZoneModel.Model.Validation
 {
-    public class BadZoneDefinitionException : System.Exception
+    public class ZoneModelDefinitionException : System.Exception
     {
-        public BadZoneDefinitionException(string message): base(message)
+        public ZoneModelDefinitionException(string message): base(message)
         {
         }
     }
