@@ -1,8 +1,9 @@
-﻿using NetworkZoneModelCli.Validation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using ZoneModel.Model;
+using ZoneModel.Model.Validation;
 
 namespace NetworkZoneModelCli
 {
@@ -30,7 +31,7 @@ namespace NetworkZoneModelCli
             Console.WriteLine($"Got {rules.Count} rules");
             Console.WriteLine($"Got {zones.Count} zones");
 
-            var zoneModel = new ZoneModel() {
+            var model = new RootModel() {
                 ZoneGroup = zoneGroup,
                 Zones = zones,
                 Rules = new List<Rule>(rules)
@@ -40,7 +41,7 @@ namespace NetworkZoneModelCli
 
             try
             {
-                zoneModel.Validate();
+                model.Validate();
                 Console.WriteLine("Zone Model is valid");
             } 
             catch(Exception ex)
@@ -50,7 +51,7 @@ namespace NetworkZoneModelCli
 
             // write to file
             var writer = new FileWriter();
-            await writer.WriteToJsonFile(zoneModel, outputFilePath, replace: true);
+            await writer.WriteToJsonFile(model, outputFilePath, replace: true);
             Console.WriteLine($"Wrote ZoneModel to file {outputFilePath}");
 
             // make some sample classes

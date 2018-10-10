@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetworkZoneModelCli.Validation
+namespace ZoneModel.Model.Validation
 {
     public class BadZoneDefinitionException : System.Exception
     {

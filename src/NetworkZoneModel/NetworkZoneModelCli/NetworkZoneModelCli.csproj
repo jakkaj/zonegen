@@ -35,6 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ZoneModel.Model\ZoneModel.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="templates\contosoweb\australiaeast\dev\rule\frontend2backend.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

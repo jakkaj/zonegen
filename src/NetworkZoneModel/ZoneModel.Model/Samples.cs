@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Model
 {
     // this class contains samples used to create new yaml files
     public static class Samples

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Model
 {
 
     // POCO definition of a zone 
@@ -12,9 +12,9 @@ namespace NetworkZoneModelCli
         [JsonProperty("id")]
         public string Id { get; set; } // internet-facing
         [JsonProperty("parent")]
-        public Zone Parent {get;set;}
+        public Zone Parent { get; set; }
         [JsonProperty("chidren")]
-        public IList<Zone> Children {get;set;} // zones are hierarchial, and a type of edge
+        public IList<Zone> Children { get; set; } // zones are hierarchial, and a type of edge
 
 
     }

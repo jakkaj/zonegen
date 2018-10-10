@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using ZoneModel.Model;
 
 namespace NetworkZoneModelCli
 {
     public class FileWriter
     {
-        public async Task WriteToJsonFile(ZoneModel model, string path, bool replace = false)
+        public async Task WriteToJsonFile(RootModel model, string path, bool replace = false)
         {
             var json = JsonConvert.SerializeObject(model);
             await WriteTextToFile(path, json, replace);

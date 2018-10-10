@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NetworkZoneModelCli.Validation
+namespace ZoneModel.Model.Validation
 {
     public static class BasicNetworkZoneModelValidatorExtension
     {
-        public static void Validate(this ZoneModel model)
+        public static void Validate(this RootModel model)
         {
             if (string.IsNullOrEmpty(model.ZoneGroup))
             {

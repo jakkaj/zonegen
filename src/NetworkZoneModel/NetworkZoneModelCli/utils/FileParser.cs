@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using ZoneModel.Model;
 
 namespace NetworkZoneModelCli
 {

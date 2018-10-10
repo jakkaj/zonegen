@@ -1,10 +1,11 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Model
 {
-    public class ZoneModel
+    public class RootModel
     {
         // ZoneGroup > Region > Environment > Zone
         public string ZoneGroup { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using YamlDotNet.Serialization;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Model
 {
     //this is an edge in the zone model graph
     public class NetworkRule : Rule 
