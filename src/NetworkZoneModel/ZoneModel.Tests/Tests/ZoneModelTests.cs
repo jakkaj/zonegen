@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,6 +22,18 @@ namespace ZoneModel.Tests.Tests
             Assert.IsNotNull(model);
 
             Assert.IsTrue(model.ZoneGroup == "contosoweb");
+
+            foreach(var r in model.Regions)
+            {
+                foreach(var e in r.Environments.Where(_ => ! _.Ignore))
+                {
+                    foreach(var z in e.Zones)
+                    {
+                        Assert.IsFalse(string.IsNullOrEmpty(z.Cidr));
+                    }
+                }
+            }
+
         }
     }
 }

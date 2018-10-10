@@ -9,6 +9,7 @@ namespace ZoneModel.Model
         public string Id { get; set; }
         public bool Ignore { get; set; }
         public string Cidr { get; set; }
+        public int SubnetMaskSize { get; set; } = 24;
         public List<Zone> Zones { get; set; }
         public List<Rule> Rules { get; set; }
     }

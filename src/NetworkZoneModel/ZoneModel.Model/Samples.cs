@@ -18,7 +18,8 @@ namespace ZoneModel.Model
 
         public static Zone ZoneExample(string id) => new Zone()
         {
-            Id = id
+            Id = id,
+            Index = 2
         };
     }
 }

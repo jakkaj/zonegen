@@ -13,6 +13,11 @@ namespace ZoneModel.Services.Zones
 {
     public class ZoneModelParser : IZoneModelParser
     {
+        private ISubnetCalculator _subnetCalculator;
+        public ZoneModelParser(ISubnetCalculator subnetCalculator)
+        {
+            _subnetCalculator = subnetCalculator;
+        }
         public async Task<RootModel> Parse(string zoneGroup, string region, string environment,
             string basePath = null)
         {
@@ -49,6 +54,7 @@ namespace ZoneModel.Services.Zones
                     var rulePath = Path.Combine(fullPath, zoneGroup, reg.Id, env.Id, "rule");
                     var zones = FileParser.ParseZonesFile(zonePath);
                     Console.WriteLine($"Got {zones.Count} zones");
+                    zones.ForEach(z => z.Cidr = _subnetCalculator.GetSubnetOffset(env.Cidr, (byte)env.SubnetMaskSize, z.Index));
                     env.Zones = zones;
 
                     var rules = FileParser.ParseAllInDir<NetworkRule>(rulePath);

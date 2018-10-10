@@ -14,5 +14,8 @@ namespace ZoneModel.Model
         
         [JsonProperty("index")]
         public int Index { get; set; }
+
+        [JsonProperty("cidr")]
+        public string Cidr { get; set; }
     }
 }
