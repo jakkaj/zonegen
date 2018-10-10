@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkZoneModelCli", "NetworkZoneModelCli\NetworkZoneModelCli.csproj", "{7A6E7DBF-BC5D-4E02-91CD-D998AB3E2D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetworkZoneModelCli", "NetworkZoneModelCli\NetworkZoneModelCli.csproj", "{7A6E7DBF-BC5D-4E02-91CD-D998AB3E2D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoneModel.Services", "ZoneModel.Services\ZoneModel.Services.csproj", "{DABF5C75-69CE-4F41-BF78-4AD6164FEFEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoneModel.Tests", "ZoneModel.Tests\ZoneModel.Tests.csproj", "{B302ABD3-0F23-45AA-8694-9B343ACE8D05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7A6E7DBF-BC5D-4E02-91CD-D998AB3E2D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A6E7DBF-BC5D-4E02-91CD-D998AB3E2D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A6E7DBF-BC5D-4E02-91CD-D998AB3E2D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABF5C75-69CE-4F41-BF78-4AD6164FEFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABF5C75-69CE-4F41-BF78-4AD6164FEFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABF5C75-69CE-4F41-BF78-4AD6164FEFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABF5C75-69CE-4F41-BF78-4AD6164FEFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B302ABD3-0F23-45AA-8694-9B343ACE8D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B302ABD3-0F23-45AA-8694-9B343ACE8D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B302ABD3-0F23-45AA-8694-9B343ACE8D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B302ABD3-0F23-45AA-8694-9B343ACE8D05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
