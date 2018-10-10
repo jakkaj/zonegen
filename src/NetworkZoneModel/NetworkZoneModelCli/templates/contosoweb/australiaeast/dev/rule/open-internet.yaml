@@ -1,0 +1,4 @@
+﻿id: open-internet
+from: internet-facing
+to: internet
+isBidirectional: true

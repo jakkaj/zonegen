@@ -1,0 +1,4 @@
+﻿id: bank-access
+from: internet-facing
+to: bank
+isBidirectional: true
