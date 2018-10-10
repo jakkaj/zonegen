@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using NetworkZoneModelCli;
 using ZoneModel.Model;
 using ZoneModel.Model.Validation;
 using ZoneModel.Services.Contracts;
+using ZoneModel.Services.Utils;
 
 namespace ZoneModel.Services.Zones
 {

@@ -1,12 +1,11 @@
-
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using ZoneModel.Model;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Services.Utils
 {
     public class FileParser
     {

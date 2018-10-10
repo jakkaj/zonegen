@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using ZoneModel.Model;
 
-namespace NetworkZoneModelCli
+namespace ZoneModel.Services.Utils
 {
     public class FileWriter
     {

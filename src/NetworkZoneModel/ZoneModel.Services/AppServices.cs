@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZoneModel.Services.Contracts;
+using ZoneModel.Services.Options;
 using ZoneModel.Services.Zones;
 
 namespace ZoneModel.Services
@@ -24,6 +25,7 @@ namespace ZoneModel.Services
 
             var serviceProvider = services
                 .AddSingleton<IZoneModelParser, ZoneModelParser>()
+                .AddSingleton<IOptionsParser, OptionsParser>()
                 .BuildServiceProvider();
 
             Services = serviceProvider;
