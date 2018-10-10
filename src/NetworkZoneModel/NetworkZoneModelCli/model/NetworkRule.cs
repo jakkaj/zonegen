@@ -8,6 +8,6 @@ namespace NetworkZoneModelCli
     public class NetworkRule : Rule 
     {
         [JsonProperty("ports")]
-        public IList<int> Ports {get;set;}
+        public List<int> Ports {get;set;}
     }
 }

@@ -31,7 +31,6 @@ namespace NetworkZoneModelCli
             foreach (var path in filePaths)
             {
                 var text = File.ReadAllText(path);
-                //var obj = JsonConvert.DeserializeObject<T>(text);
                 var obj = deserializer.Deserialize<T>(text);
                 results.Add(obj);
             }

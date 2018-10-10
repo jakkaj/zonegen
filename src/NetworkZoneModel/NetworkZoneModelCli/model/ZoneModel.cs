@@ -6,9 +6,10 @@ namespace NetworkZoneModelCli
 {
     public class ZoneModel
     {
-        public string Id { get; set; }
-        public IList<Zone> Zones { get; set; }
-        public IList<Rule> Rules { get; set; }
+        // ZoneGroup > Region > Environment > Zone
+        public string ZoneGroup { get; set; }
+        public List<Zone> Zones { get; set; }
+        public List<Rule> Rules { get; set; }
 
     }
 }
