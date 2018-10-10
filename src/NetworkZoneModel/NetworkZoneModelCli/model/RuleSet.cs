@@ -6,6 +6,6 @@ namespace NetworkZoneModelCli
     public class RuleSet
     {
         public string Id {get;set;}
-        public IList<Rule> Rules {get;set;}
+        public List<Rule> Rules {get;set;}
     }
 }
