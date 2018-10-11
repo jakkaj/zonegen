@@ -1,3 +1,5 @@
+![Azure pipelines](https://dev.azure.com/jordownado/zonegen/_apis/build/status/zonegen-CI)
+
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
