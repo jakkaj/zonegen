@@ -39,7 +39,7 @@ namespace ZoneModel.Services.Options
         public string File { get; set; }
     }
 
-    [Verb("init", HelpText = "Generate some sample files")]
+    [Verb("init", HelpText = "Initialise a zone project")]
     public class InitOptions
     {
         [Option('d', "directory", Required = false, HelpText = "Create in this directory")]
