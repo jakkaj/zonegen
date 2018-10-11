@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <LangVersion>7.3</LangVersion>
+	  <RuntimeIdentifiers>win10-x64;win10-x86;osx.10.12-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
