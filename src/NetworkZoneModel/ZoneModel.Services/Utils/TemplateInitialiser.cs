@@ -37,7 +37,7 @@ namespace ZoneModel.Services.Utils
             }
             if (!Directory.Exists(rootDir))
             {
-                throw new DirectoryNotFoundException(rootDir);
+                Directory.CreateDirectory(rootDir);
             }
             _zoneGroup = zoneGroup;
             _region = region;
