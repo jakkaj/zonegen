@@ -36,6 +36,14 @@ namespace NetworkZoneModelCli
 
                 var model = await zoneParser.Parse(opts.Item3, opts.Item4, opts.Item5, opts.Item2);
             }
+
+            if(opts.Item1 == ParseType.Sample)
+            {
+                var calculator = Resolve<ISubnetCalculator>();
+                var writer = Resolve<IFileWriter>();
+                var model = Samples.RootModelSample(calculator);
+                await writer.WriteAsYaml(model, opts.Item2, replace: true);
+            }
             
 
                

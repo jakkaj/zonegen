@@ -28,4 +28,12 @@ namespace ZoneModel.Services.Options
         [Option('f', "file", Required = false, HelpText = "")]
         public string File { get; set; }
     }
+
+    [Verb("sample", HelpText = "Generate some sample files")]
+    public class SampleOptions
+    {
+        [Option('o', "output", Required = true, HelpText = "path to output file")]
+        public string File { get; set; }
+
+    }
 }

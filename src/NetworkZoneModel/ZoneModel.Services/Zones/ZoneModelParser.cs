@@ -33,12 +33,6 @@ namespace ZoneModel.Services.Zones
             // probably will need to iterate in each of these subdirs
             //var root = Path.Join(fullPath, $"{zoneGroup}/{region}/{environment}");
             var configPath = Path.Join(fullPath, zoneGroup, "config.yaml");
-            
-            
-            var outputFilePath = "result.json";
-            // sample ids
-            var sampleRuleId = "ruleid";
-            var sampleZoneId = "zoneid";
             var sampleOutputPath = Directory.GetCurrentDirectory();
 
             var model = FileParser.LoadRootModelFromConfig(configPath);
@@ -74,20 +68,6 @@ namespace ZoneModel.Services.Zones
             {
                 Console.WriteLine(ex.Message);
             }
-
-            // write to file
-            //var writer = new FileWriter();
-            //await writer.WriteToJsonFile(model, outputFilePath, replace: true);
-            //Console.WriteLine($"Wrote ZoneModel to file {outputFilePath}");
-
-            //// make some sample classes
-            //var sampleRule = Samples.NetworkRuleSample(sampleRuleId);
-            //var sampleZone = Samples.ZoneExample(sampleZoneId);
-            //// write a sample
-
-            //await writer.WriteToYamlFile(sampleZone, sampleOutputPath);
-            //await writer.WriteToYamlFile(sampleRule, sampleOutputPath);
-
 
             return model;
         }

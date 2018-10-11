@@ -10,6 +10,7 @@ namespace ZoneModel.Services.Options
     {
         ZoneModel, 
         Basic,
+        Sample,
         Error
     }
 
@@ -17,10 +18,11 @@ namespace ZoneModel.Services.Options
     {
         public (ParseType, string,string,string, string) ParseArgs(string[] args)
         {
-            var configuredOpts = CommandLine.Parser.Default.ParseArguments<ParseZoneModelOptions, BasicOptions>(args)
+            var configuredOpts = CommandLine.Parser.Default.ParseArguments<ParseZoneModelOptions, BasicOptions, SampleOptions>(args)
                 .MapResult(
                     (ParseZoneModelOptions opts) => (ParseType.ZoneModel, opts.Directory, opts.ZoneGroup, opts.Region, opts.Environment),
                     (BasicOptions opts) => (ParseType.Basic, opts.File, "", "", ""),
+                    (SampleOptions opts) => (ParseType.Sample, opts.File, "", "", ""),
                     errs => (ParseType.Error, "", "", "", ""));
 
             return configuredOpts;
