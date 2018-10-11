@@ -1,0 +1,8 @@
+﻿regions:
+  - id: australiaeast
+    environments:
+    - id: hub
+      cidr: 10.1.0.0/16
+      ignore: true
+    - id: dev
+      cidr: 10.3.0.0/16

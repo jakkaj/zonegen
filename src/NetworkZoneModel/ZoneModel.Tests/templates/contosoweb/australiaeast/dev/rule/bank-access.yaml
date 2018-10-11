@@ -1,0 +1,4 @@
+﻿id: bank-access
+from: backend
+to: OneCloud.australiaeast.hub.bank
+isBidirectional: true

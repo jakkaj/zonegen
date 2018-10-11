@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NetworkZoneModelCli": {
+      "commandName": "Project",
+      "commandLineArgs": "parse -d templates -z contosoweb -r australiaeast -e dev"
+    }
+  }
+}
