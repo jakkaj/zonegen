@@ -8,7 +8,7 @@ Initialise a Zone Model project with directory structure and config files
 
 Parse the project files
 
-`dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- parse parse -d templates -z testgroup`
+`dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- parse parse -d templates -g testgroup`
 
 To write out the final model, use `--write`
 
