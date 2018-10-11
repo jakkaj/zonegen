@@ -23,8 +23,9 @@ namespace ZoneModel.Tests.Tests
             var opts = Resolve<IOptionsParser>();
             var configuredOpts = opts.ParseArgs(args.ToArray());
 
-            Assert.IsTrue(configuredOpts.Item1 == ParseType.Basic);
-            Assert.IsTrue(configuredOpts.Item2 == "Some file");
+            Assert.IsTrue(configuredOpts.ParseType == ParseType.Basic);
+            var basic = configuredOpts as BasicOptions;
+            Assert.IsTrue(basic.File == "Some file");
 
         }
 

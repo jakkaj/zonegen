@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using ZoneModel.Model;
-using ZoneModel.Model.Validation;
 using ZoneModel.Services;
 using ZoneModel.Services.Contracts;
 using ZoneModel.Services.Options;
@@ -23,20 +19,21 @@ namespace NetworkZoneModelCli
 
             var opts = optsParser.ParseArgs(args);
 
-            if (opts.Item1 == ParseType.Error)
+            if (opts.ParseType == ParseType.Error)
             {
                 Console.WriteLine("Options error, exiting");
                 System.Environment.Exit(1);
                 return;
             }
 
-            if (opts.Item1 == ParseType.ZoneModel)
+            if (opts.ParseType == ParseType.ZoneModel)
             {
+                var zm = opts as ParseZoneModelOptions;
                 var zoneParser = Resolve<IZoneModelParser>();
 
-                var model = zoneParser.Parse(opts.Item3, opts.Item4, opts.Item5, opts.Item2);
+                var model = zoneParser.Parse(zm.ZoneGroup, zm.Region, zm.Environment, zm.Directory);
 
-                if(opts.Item6)
+                if(zm.WriteToFile)
                 {
                     var writer = Resolve<IFileWriter>();
                     var path = Path.Join(Directory.GetCurrentDirectory(), "zone-variables.yaml");
@@ -45,31 +42,25 @@ namespace NetworkZoneModelCli
                 }
             }
 
-            if(opts.Item1 == ParseType.Sample)
+            if(opts.ParseType == ParseType.Sample)
             {
+                var zm = opts as SampleOptions;
                 var calculator = Resolve<ISubnetCalculator>();
                 var writer = Resolve<IFileWriter>();
                 var model = Samples.RootModelSample(calculator);
-                await writer.WriteAsYaml(model, opts.Item2, replace: true);
+                await writer.WriteAsYaml(model, zm.File, replace: true);
             }
 
-            if (opts.Item1 == ParseType.Init)
+            if (opts.ParseType == ParseType.Init)
             {
+                var zm = opts as InitOptions;
                 var initialiser = Resolve<ITemplateInitialiser>();
-                var rootDir = opts.Item2;
-                var zoneGroup = opts.Item3;
-                var region = opts.Item4;
-                var env = opts.Item5;
 
-                rootDir = initialiser.CreateDirectoryStructure(rootDir, zoneGroup, region, env);
+                zm.RootDirectory = initialiser.CreateDirectoryStructure(zm.RootDirectory, zm.ZoneGroup, zm.Region, zm.Environment);
                 await initialiser.WriteConfigFile();
                 await initialiser.WriteRuleFile("rule1");
                 await initialiser.WriteZonesFile("zone1");
             }
-
-
-
-
 
             Console.ReadKey();
         }
