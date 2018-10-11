@@ -5,15 +5,23 @@ using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using ZoneModel.Model;
+using ZoneModel.Services.Contracts;
 
 namespace ZoneModel.Services.Utils
 {
-    public class FileWriter
+    public class FileWriter : IFileWriter
     {
         public async Task WriteToJsonFile(RootModel model, string path, bool replace = false)
         {
             var json = JsonConvert.SerializeObject(model);
             await WriteTextToFile(path, json, replace);
+        }
+
+        public async Task WriteAsYaml<T>(T data, string path, bool replace = false) where T : class
+        {
+            var serializer = new SerializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+            var yaml = serializer.Serialize(data);
+            await WriteTextToFile(path, yaml, replace);
         }
 
         public async Task WriteToYamlFile(Zone zone, string directoryPath, bool replace = false)

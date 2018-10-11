@@ -21,7 +21,7 @@ namespace ZoneModel.Tests.Tests
         {
             var model = new RootModel();
             var sampleRule = Samples.NetworkRuleSample("myId");
-            var sampleZone = Samples.ZoneExample("zoneId");
+            var sampleZone = Samples.ZoneSample("zoneId", 1);
             model.Regions = new List<Region>();
             model.Regions.Add(new Region() {
                 Id = "regionId",

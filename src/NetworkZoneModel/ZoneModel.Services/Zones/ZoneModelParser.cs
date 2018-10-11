@@ -54,7 +54,7 @@ namespace ZoneModel.Services.Zones
                     var rulePath = Path.Combine(fullPath, zoneGroup, reg.Id, env.Id, "rule");
                     var zones = FileParser.ParseZonesFile(zonePath);
                     Console.WriteLine($"Got {zones.Count} zones");
-                    zones.ForEach(z => z.Cidr = _subnetCalculator.GetSubnetOffset(env.Cidr, (byte)env.SubnetMaskSize, z.Index));
+                    zones.ForEach(z => z.Cidr = _subnetCalculator.GetSubnetOffset(env.Cidr, (byte)env.ZoneSubnetMaskSize, z.Index));
                     env.Zones = zones;
 
                     var rules = FileParser.ParseAllInDir<NetworkRule>(rulePath);
