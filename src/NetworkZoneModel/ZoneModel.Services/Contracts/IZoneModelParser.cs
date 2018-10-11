@@ -5,7 +5,7 @@ namespace ZoneModel.Services.Contracts
 {
     public interface IZoneModelParser
     {
-        Task<RootModel> Parse(string zoneGroup, string region, string environment,
+        RootModel Parse(string zoneGroup, string region, string environment,
             string basePath = null);
     }
 }

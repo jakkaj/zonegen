@@ -13,11 +13,11 @@ namespace ZoneModel.Tests.Tests
     public class ZoneModelTests :TestBase
     {
         [TestMethod]
-        public async Task TestSimpleParse()
+        public void TestSimpleParse()
         {
             var parser = Resolve<IZoneModelParser>();
 
-            var model = await parser.Parse("contosoweb", "australiaeast", "dev", "templates");
+            var model = parser.Parse("contosoweb", "australiaeast", "dev", "templates");
 
             Assert.IsNotNull(model);
 

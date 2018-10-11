@@ -18,7 +18,7 @@ namespace ZoneModel.Services.Zones
         {
             _subnetCalculator = subnetCalculator;
         }
-        public async Task<RootModel> Parse(string zoneGroup, string region, string environment,
+        public RootModel Parse(string zoneGroup, string region, string environment,
             string basePath = null)
         {
             if (basePath == null)
@@ -30,15 +30,8 @@ namespace ZoneModel.Services.Zones
 
             Console.WriteLine("Starting...");
            
-            // probably will need to iterate in each of these subdirs
             //var root = Path.Join(fullPath, $"{zoneGroup}/{region}/{environment}");
             var configPath = Path.Join(fullPath, zoneGroup, "config.yaml");
-            
-            
-            var outputFilePath = "result.json";
-            // sample ids
-            var sampleRuleId = "ruleid";
-            var sampleZoneId = "zoneid";
             var sampleOutputPath = Directory.GetCurrentDirectory();
 
             var model = FileParser.LoadRootModelFromConfig(configPath);
@@ -74,20 +67,6 @@ namespace ZoneModel.Services.Zones
             {
                 Console.WriteLine(ex.Message);
             }
-
-            // write to file
-            //var writer = new FileWriter();
-            //await writer.WriteToJsonFile(model, outputFilePath, replace: true);
-            //Console.WriteLine($"Wrote ZoneModel to file {outputFilePath}");
-
-            //// make some sample classes
-            //var sampleRule = Samples.NetworkRuleSample(sampleRuleId);
-            //var sampleZone = Samples.ZoneExample(sampleZoneId);
-            //// write a sample
-
-            //await writer.WriteToYamlFile(sampleZone, sampleOutputPath);
-            //await writer.WriteToYamlFile(sampleRule, sampleOutputPath);
-
 
             return model;
         }

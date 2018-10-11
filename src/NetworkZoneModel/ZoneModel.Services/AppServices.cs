@@ -28,7 +28,8 @@ namespace ZoneModel.Services
                 .AddSingleton<IZoneModelParser, ZoneModelParser>()
                 .AddSingleton<IOptionsParser, OptionsParser>()
                 .AddSingleton<ISubnetCalculator, SubnetCalculator>()
-                .AddTransient<IFileWriter, FileWriter>()
+                .AddSingleton<IFileWriter, FileWriter>()
+                .AddTransient<ITemplateInitialiser, TemplateInitialiser>()
                 .BuildServiceProvider();
 
             Services = serviceProvider;

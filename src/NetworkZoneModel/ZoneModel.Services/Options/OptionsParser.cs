@@ -10,18 +10,27 @@ namespace ZoneModel.Services.Options
     {
         ZoneModel, 
         Basic,
+        Sample,
+        Init,
         Error
     }
 
     public class OptionsParser : IOptionsParser
     {
-        public (ParseType, string,string,string, string) ParseArgs(string[] args)
+        public OptionResultBase ParseArgs(string[] args)
         {
-            var configuredOpts = CommandLine.Parser.Default.ParseArguments<ParseZoneModelOptions, BasicOptions>(args)
-                .MapResult(
-                    (ParseZoneModelOptions opts) => (ParseType.ZoneModel, opts.Directory, opts.ZoneGroup, opts.Region, opts.Environment),
-                    (BasicOptions opts) => (ParseType.Basic, opts.File, "", "", ""),
-                    errs => (ParseType.Error, "", "", "", ""));
+            var configuredOpts = CommandLine.Parser.Default.ParseArguments<
+                    ParseZoneModelOptions, 
+                    BasicOptions, 
+                    SampleOptions,
+                    InitOptions>(args)
+                .MapResult<ParseZoneModelOptions, BasicOptions, SampleOptions, InitOptions, OptionResultBase>(
+                    (ParseZoneModelOptions opts) => opts,
+                    (BasicOptions opts) => opts,
+                    (SampleOptions opts) => opts,
+                    (InitOptions opts) => opts,
+                    errs => new ErrorOption()
+                    );
 
             return configuredOpts;
         }
