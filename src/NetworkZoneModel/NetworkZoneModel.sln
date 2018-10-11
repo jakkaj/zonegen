@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoneModel.Services", "ZoneM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoneModel.Tests", "ZoneModel.Tests\ZoneModel.Tests.csproj", "{B302ABD3-0F23-45AA-8694-9B343ACE8D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoneModel.Model", "ZoneModel.Model\ZoneModel.Model.csproj", "{0780C36D-563B-47C3-AF7D-85B195CEDA80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoneModel.Model", "ZoneModel.Model\ZoneModel.Model.csproj", "{0780C36D-563B-47C3-AF7D-85B195CEDA80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4C7B169E-78A5-4B27-B25C-BB23C39550CE}"
+	ProjectSection(SolutionItems) = preProject
+		build.ps1 = build.ps1
+		restore.bat = restore.bat
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
