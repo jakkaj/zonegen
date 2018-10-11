@@ -1,4 +1,4 @@
-![Azure pipelines](https://dev.azure.com/jordownado/zonegen/_apis/build/status/zonegen-CI)
+[![Build Status](https://dev.azure.com/jordownado/zonegen/_apis/build/status/zonegen-CI)](https://dev.azure.com/jordownado/zonegen/_build/latest?definitionId=2)
 
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
