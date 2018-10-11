@@ -20,6 +20,8 @@ Parse the project files
 
 `dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- parse parse -d templates -z testgroup`
 
+To write out the final model, use `--write`
+
 Generate some sample output
 
 `dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- sample -o output.yaml`

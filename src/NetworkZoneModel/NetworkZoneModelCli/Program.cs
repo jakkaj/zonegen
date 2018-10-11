@@ -35,6 +35,14 @@ namespace NetworkZoneModelCli
                 var zoneParser = Resolve<IZoneModelParser>();
 
                 var model = await zoneParser.Parse(opts.Item3, opts.Item4, opts.Item5, opts.Item2);
+
+                if(opts.Item6)
+                {
+                    var writer = Resolve<IFileWriter>();
+                    var path = Path.Join(Directory.GetCurrentDirectory(), "zone-variables.yaml");
+                    Console.WriteLine($"Creating {path}");
+                    await writer.WriteAsYaml(model, path);
+                }
             }
 
             if(opts.Item1 == ParseType.Sample)

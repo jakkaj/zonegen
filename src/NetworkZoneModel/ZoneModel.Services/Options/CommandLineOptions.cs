@@ -15,6 +15,9 @@ namespace ZoneModel.Services.Options
         [Option('g', "zonegroup", Required = false, HelpText = "Name of the zone group - e.g. contosoweb")]
         public string ZoneGroup { get; set; }
 
+        [Option('w', "write", Default = false, Required =false, HelpText = "Write to file" )]
+        public bool WriteToFile { get; set; }
+
         [Option('r', "region", Required = false, HelpText = "")]
         public string Region { get; set; }
 

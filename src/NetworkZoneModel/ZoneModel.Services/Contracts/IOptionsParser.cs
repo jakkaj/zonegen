@@ -4,6 +4,6 @@ namespace ZoneModel.Services.Contracts
 {
     public interface IOptionsParser
     {
-        (ParseType, string,string,string, string) ParseArgs(string[] args);
+        (ParseType, string,string,string, string, bool) ParseArgs(string[] args);
     }
 }
