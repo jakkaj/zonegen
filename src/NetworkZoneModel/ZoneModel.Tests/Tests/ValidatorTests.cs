@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ZoneModel.Model;
 using ZoneModel.Model.Validation;
+using ZoneModel.Services;
 
 namespace ZoneModel.Tests.Tests
 {

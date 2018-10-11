@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using ZoneModel.Model;
 using ZoneModel.Services.Contracts;
 
-namespace ZoneModel.Model
+namespace ZoneModel.Services
 {
     // this class contains samples used to create new yaml files
     public static class Samples
     {
-        public static NetworkRule NetworkRuleSample(string id) => new NetworkRule() {
-            From = "from-this-zone",
-            To = "to-this-zone",
+        public static NetworkRule NetworkRuleSample(string id,
+                string from = "from-this-zone",
+                string to = "to-this-zone",
+                bool isBidirectional = true,
+                string description = "Describe the rule" ) => new NetworkRule() {
+            From = from,
+            To = to,
             Id = id,
-            IsBidirectional = true,
-            Description = "Describe the rule",
+            IsBidirectional = isBidirectional,
+            Description = description,
             Ports = new List<int> { 22, 80 }
         };
 
@@ -23,6 +27,33 @@ namespace ZoneModel.Model
             Index = index
         };
 
+        public static RootModel ConfigSample(string regionId, string envId, string hubId)
+        {
+            var model = new RootModel();
+            model.Regions = new List<Region>
+            {
+                new Region()
+                {
+                    Id = regionId,
+                    Environments = new List<Environment>
+                    {
+                        new Environment()
+                        {
+                            Id = envId,
+                            Cidr = "10.2.0.0/16"
+                        },
+                        new Environment()
+                        {
+                            Id = hubId,
+                            Cidr = "10.1.0.0/16",
+                            Ignore = true
+                        }
+                    }
+                }
+            };
+            return model;
+        }
+
         public static RootModel RootModelSample(ISubnetCalculator calculator)
         {
             var model = new RootModel
@@ -31,8 +62,8 @@ namespace ZoneModel.Model
                 Regions = new List<Region>()
             };
 
-            var region = new Region { Id = "australiaeast", Environments = new List<Environment>() };
-            var environment = new Environment()
+            var region = new Region { Id = "australiaeast", Environments = new List<Model.Environment>() };
+            var environment = new Model.Environment()
             {
                 Id = "platform-cnry",
                 Cidr = "10.2.0.0/16",

@@ -34,6 +34,18 @@ namespace ZoneModel.Services.Options
     {
         [Option('o', "output", Required = true, HelpText = "path to output file")]
         public string File { get; set; }
+    }
 
+    [Verb("init", HelpText = "Generate some sample files")]
+    public class InitOptions
+    {
+        [Option('d', "directory", Required = false, HelpText = "Create in this directory")]
+        public string RootDirectory { get; set; }
+        [Option('g', "group", Required = true, HelpText = "Zone Group Name")]
+        public string ZoneGroup { get; set; }
+        [Option('r', "region", Required = true, HelpText = "Region Name")]
+        public string Region { get; set; }
+        [Option('e', "environment", Required = true, HelpText = "Environment Name")]
+        public string Environment { get; set; }
     }
 }

@@ -13,6 +13,9 @@ TODO: Describe and show how to build your code and run the tests.
 
 # Run the CLI
 
+Initialise a Zone Model project with directory structure and config files
+` dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- init -g testgroup -r australiaeast -e dev`
+
 Generate some sample output
 
 `dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- sample -o output.yaml`

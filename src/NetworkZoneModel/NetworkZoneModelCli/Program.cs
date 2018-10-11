@@ -44,11 +44,25 @@ namespace NetworkZoneModelCli
                 var model = Samples.RootModelSample(calculator);
                 await writer.WriteAsYaml(model, opts.Item2, replace: true);
             }
-            
 
-               
+            if (opts.Item1 == ParseType.Init)
+            {
+                var initialiser = Resolve<ITemplateInitialiser>();
+                var rootDir = opts.Item2;
+                var zoneGroup = opts.Item3;
+                var region = opts.Item4;
+                var env = opts.Item5;
 
-            
+                rootDir = initialiser.CreateDirectoryStructure(rootDir, zoneGroup, region, env);
+                await initialiser.WriteConfigFile();
+                await initialiser.WriteRuleFile("rule1");
+                await initialiser.WriteZonesFile("zone1");
+            }
+
+
+
+
+
             Console.ReadKey();
         }
 

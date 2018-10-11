@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ZoneModel.Model;
 using ZoneModel.Model.Validation;
+using ZoneModel.Services;
 using ZoneModel.Services.Contracts;
 using ZoneModel.Tests;
 
