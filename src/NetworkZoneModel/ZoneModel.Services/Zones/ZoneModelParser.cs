@@ -18,7 +18,7 @@ namespace ZoneModel.Services.Zones
         {
             _subnetCalculator = subnetCalculator;
         }
-        public async Task<RootModel> Parse(string zoneGroup, string region, string environment,
+        public RootModel Parse(string zoneGroup, string region, string environment,
             string basePath = null)
         {
             if (basePath == null)
@@ -30,7 +30,6 @@ namespace ZoneModel.Services.Zones
 
             Console.WriteLine("Starting...");
            
-            // probably will need to iterate in each of these subdirs
             //var root = Path.Join(fullPath, $"{zoneGroup}/{region}/{environment}");
             var configPath = Path.Join(fullPath, zoneGroup, "config.yaml");
             var sampleOutputPath = Directory.GetCurrentDirectory();

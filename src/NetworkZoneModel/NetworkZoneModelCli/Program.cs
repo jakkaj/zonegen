@@ -34,7 +34,7 @@ namespace NetworkZoneModelCli
             {
                 var zoneParser = Resolve<IZoneModelParser>();
 
-                var model = await zoneParser.Parse(opts.Item3, opts.Item4, opts.Item5, opts.Item2);
+                var model = zoneParser.Parse(opts.Item3, opts.Item4, opts.Item5, opts.Item2);
 
                 if(opts.Item6)
                 {
