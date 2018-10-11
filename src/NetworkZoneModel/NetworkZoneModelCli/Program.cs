@@ -38,7 +38,7 @@ namespace NetworkZoneModelCli
                     var writer = Resolve<IFileWriter>();
                     var path = Path.Join(Directory.GetCurrentDirectory(), "zone-variables.yaml");
                     Console.WriteLine($"Creating {path}");
-                    await writer.WriteAsYaml(model, path);
+                    await writer.WriteAsYaml(model, path, replace: true);
                 }
             }
 
@@ -61,8 +61,6 @@ namespace NetworkZoneModelCli
                 await initialiser.WriteRuleFiles();
                 await initialiser.WriteZonesFile();
             }
-
-            Console.ReadKey();
         }
 
         public static T Resolve<T>()
