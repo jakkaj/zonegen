@@ -67,16 +67,35 @@ namespace ZoneModel.Services.Utils
             await _fileWriter.WriteAsYaml(sampleConfig, Path.Join(ZoneGroupDirectoryPath, "config.yaml"), replace: true);
         }
 
-        public async Task WriteZonesFile(string zoneId)
+        public async Task WriteZonesFile()
         {
-            var zones = new List<Zone> { Samples.ZoneSample(zoneId, 1) };
+            var zones = new List<Zone> { new Zone {  Id="frontend", Index = 1}, new Zone{ Id = "backend", Index = 2 } };
             await _fileWriter.WriteAsYaml(zones, Path.Join(EnvironmentDirectoryPath, "zones.yaml"), replace: true);
         }
 
-        public async Task WriteRuleFile(string ruleId)
+        public async Task WriteRuleFiles()
         {
-            var rule = Samples.NetworkRuleSample(ruleId);
-            await _fileWriter.WriteAsYaml(rule, Path.Join(RuleDirectoryPath, $"{ruleId}.yaml"), replace: true);
+            var inboundRule = new NetworkRule
+            {
+                Id = "open-internet",
+                From = "internet",
+                To = "frontend",
+                Ports = new List<int> { 80, 443 },
+                IsBidirectional = false,
+                Description = "Allow incoming web requests"
+            };
+            var backendRule = new NetworkRule
+            {
+                Id = "access-backend",
+                From = "frontend",
+                To = "backend",
+                Ports = new List<int> { 80, 443 },
+                IsBidirectional = false,
+                Description = "Allow frontend to access backend"
+            };
+            await _fileWriter.WriteAsYaml(inboundRule, Path.Join(RuleDirectoryPath, $"{inboundRule.Id}.yaml"), replace: true);
+            await _fileWriter.WriteAsYaml(backendRule, Path.Join(RuleDirectoryPath, $"{backendRule.Id}.yaml"), replace: true);
+
         }
     }
 }

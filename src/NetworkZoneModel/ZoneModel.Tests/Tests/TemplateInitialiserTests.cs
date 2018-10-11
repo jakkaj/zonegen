@@ -17,8 +17,6 @@ namespace ZoneModel.Tests.Tests
             var group = "gro";
             var region = "australiasoutheast";
             var env = "devtest";
-            var ruleId = "rulezz";
-            var zoneId = "zonezzz";
             var rootDir = Path.Join(Directory.GetCurrentDirectory(), "scratch");
             var initialiser = Resolve<ITemplateInitialiser>();
             var actualRootDir = initialiser.CreateDirectoryStructure(rootDir, group, region, env);
@@ -27,9 +25,10 @@ namespace ZoneModel.Tests.Tests
             Assert.IsTrue(Directory.Exists(Path.Combine(rootDir, "templates", group, region, env)));
             await initialiser.WriteConfigFile();
             Assert.IsTrue(File.Exists(Path.Combine(rootDir, "templates", group, "config.yaml")));
-            await initialiser.WriteRuleFile(ruleId);
-            Assert.IsTrue(File.Exists(Path.Combine(rootDir, "templates", group, region, env, "rule", $"{ruleId}.yaml")));
-            await initialiser.WriteZonesFile(zoneId);
+            await initialiser.WriteRuleFiles();
+            Assert.IsTrue(File.Exists(Path.Combine(rootDir, "templates", group, region, env, "rule", "access-backend.yaml")));
+            Assert.IsTrue(File.Exists(Path.Combine(rootDir, "templates", group, region, env, "rule", "open-internet.yaml")));
+            await initialiser.WriteZonesFile();
             Assert.IsTrue(File.Exists(Path.Combine(rootDir, "templates", group, region, env, "zones.yaml")));
 
             // cleanup

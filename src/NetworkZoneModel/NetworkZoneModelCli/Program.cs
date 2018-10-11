@@ -58,8 +58,8 @@ namespace NetworkZoneModelCli
 
                 zm.RootDirectory = initialiser.CreateDirectoryStructure(zm.RootDirectory, zm.ZoneGroup, zm.Region, zm.Environment);
                 await initialiser.WriteConfigFile();
-                await initialiser.WriteRuleFile("rule1");
-                await initialiser.WriteZonesFile("zone1");
+                await initialiser.WriteRuleFiles();
+                await initialiser.WriteZonesFile();
             }
 
             Console.ReadKey();

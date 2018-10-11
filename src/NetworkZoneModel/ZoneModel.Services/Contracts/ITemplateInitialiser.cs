@@ -9,7 +9,7 @@ namespace ZoneModel.Services.Contracts
     {
         string CreateDirectoryStructure(string rootDir, string zoneGroup, string region, string env);
         Task WriteConfigFile();
-        Task WriteZonesFile(string zoneId);
-        Task WriteRuleFile(string ruleId);
+        Task WriteZonesFile();
+        Task WriteRuleFiles();
     }
 }
