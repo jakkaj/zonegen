@@ -12,7 +12,7 @@ namespace ZoneModel.Services.Options
         [Option('d', "directory", Required = false, HelpText = "Base path of templates. Blank will use current directory")]
         public string Directory { get; set; }
 
-        [Option('z', "zonegroup", Required = false, HelpText = "Name of the zone group - e.g. contosoweb")]
+        [Option('g', "zonegroup", Required = false, HelpText = "Name of the zone group - e.g. contosoweb")]
         public string ZoneGroup { get; set; }
 
         [Option('r', "region", Required = false, HelpText = "")]
