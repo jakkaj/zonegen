@@ -1,6 +1,8 @@
 # ZoneGen:: VDC Secure Network Modeling 
 Zonegen is a CLI tool for creating, managing, and visualising network security zone models for virtual data centres.
 
+[![Build Status](https://dev.azure.com/jordownado/zonegen/_apis/build/status/zonegen-CI)](https://dev.azure.com/jordownado/zonegen/_build/latest?definitionId=2)
+
 ## Run the CLI
 
 Initialise a Zone Model project with directory structure and config files
