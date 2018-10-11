@@ -336,3 +336,5 @@ ASALocalRun/
 Publish
 
 /templates/**
+
+/zone-variables.yaml
