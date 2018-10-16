@@ -28,18 +28,8 @@ namespace NetworkZoneModelCli
 
             if (opts.ParseType == ParseType.ZoneModel)
             {
-                var zm = opts as ParseZoneModelOptions;
-                var zoneParser = Resolve<IZoneModelParser>();
-
-                var model = zoneParser.Parse(zm.ZoneGroup, zm.Region, zm.Environment, zm.Directory);
-
-                if(zm.WriteToFile)
-                {
-                    var writer = Resolve<IFileWriter>();
-                    var path = Path.Join(Directory.GetCurrentDirectory(), "zone-variables.yaml");
-                    Console.WriteLine($"Creating {path}");
-                    await writer.WriteAsYaml(model, path, replace: true);
-                }
+                var handler = Resolve<IVerbHandler<ParseZoneModelOptions>>();
+                await handler.Handle(opts as ParseZoneModelOptions);
             }
 
             if(opts.ParseType == ParseType.Sample)
