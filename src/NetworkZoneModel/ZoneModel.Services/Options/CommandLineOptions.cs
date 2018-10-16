@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CommandLine;
+﻿using CommandLine;
 
 namespace ZoneModel.Services.Options
 {
@@ -17,6 +14,9 @@ namespace ZoneModel.Services.Options
 
         [Option('w', "write", Default = false, Required =false, HelpText = "Write to file" )]
         public bool WriteToFile { get; set; }
+
+        [Option('s', "strong", Default = false, Required = false, HelpText = "Strongly type zone ids")]
+        public bool StrongType { get; set; }
 
         [Option('r', "region", Required = false, HelpText = "")]
         public string Region { get; set; }

@@ -3,6 +3,10 @@ Zonegen is a CLI tool for creating, managing, and visualising network security z
 
 [![Build Status](https://dev.azure.com/jordownado/zonegen/_apis/build/status/zonegen-CI)](https://dev.azure.com/jordownado/zonegen/_build/latest?definitionId=2)
 
+## Features
+
+* Strong named zones: All zones have an unique and addressable id
+
 ## Run the CLI
 
 Initialise a Zone Model project with directory structure and config files
@@ -12,7 +16,10 @@ Parse the project files
 
 `dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- parse parse -d templates -g testgroup`
 
+For strongly typed ids, use `--strong`
+
 To write out the final model, use `--write`
+
 
 Generate some sample output
 

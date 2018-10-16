@@ -2,7 +2,7 @@
   "profiles": {
     "NetworkZoneModelCli": {
       "commandName": "Project",
-      "commandLineArgs": "parse -d templates -g contosoweb -r australiaeast -e dev"
+      "commandLineArgs": "parse -d templates -g contosoweb -r australiaeast -e dev -s"
     }
   }
 }
