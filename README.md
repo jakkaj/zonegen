@@ -7,6 +7,35 @@ Zonegen is a CLI tool for creating, managing, and visualising network security z
 
 * Strong named zones: All zones have an unique and addressable id
 
+## Get started with Docker
+
+In your project directory (or in a new directory) add a `docker-compose.yaml` file, and copy the following:
+
+```yaml
+version:  '3'
+services:
+  # docker-compose run zm
+  zm:
+    image: xtellurian/zonegen:0.1 
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+    container_name: zonemodel
+    working_dir: /data
+    volumes:
+       - ./:/data
+```
+
+Run the CLI with `docker-compose run zm`
+
+### Using the Docker container
+
+* `zm --help` -> CLI help info
+* `zm init -g product-group -r australiaeast -e devtest` -> Initialise a ZoneGen project
+* `zm parse -g product-group` -> Parse and validate the project
+* `zm parse -g product-group --write --strong` -> Write zone-variables.yaml with strongly names
+
+
 ## Run the CLI
 
 Initialise a Zone Model project with directory structure and config files
