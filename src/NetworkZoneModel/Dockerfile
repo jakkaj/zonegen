@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . ./
 RUN dotnet restore NetworkZoneModel.sln -r linux-x64
 RUN dotnet build -c Release -r linux-x64
-RUN dotnet publish -c Release -r linux-x64 --output Publish\linux 
+RUN dotnet publish -c Release -r linux-x64 --output Publish/linux 
 
 # Build runtime image
 FROM microsoft/dotnet:aspnetcore-runtime
