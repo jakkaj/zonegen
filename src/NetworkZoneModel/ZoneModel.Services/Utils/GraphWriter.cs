@@ -63,7 +63,7 @@ namespace ZoneModel.Services.Utils
                 edgesTo, edgesBoth
             };
 
-            var dotGraph = graphBuilder.Build(nodes, edges, "JordoTest");
+            var dotGraph = graphBuilder.Build(nodes, edges, model.ZoneGroup);
             if (!string.IsNullOrWhiteSpace(file))
             {
                 File.WriteAllText(file, dotGraph);
