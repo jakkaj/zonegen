@@ -6,10 +6,10 @@ namespace ZoneModel.Services.Options
     public class ParseZoneModelOptions : OptionResultBase
     {
         public override ParseType ParseType { get => ParseType.ZoneModel; }
-        [Option('d', "directory", Required = false, HelpText = "Base path of templates. Blank will use current directory")]
+        [Option('d', "directory", Required = false, HelpText = "Base path of templates. Blank will use current directory", Default ="templates")]
         public string Directory { get; set; }
 
-        [Option('g', "zonegroup", Required = false, HelpText = "Name of the zone group - e.g. contosoweb")]
+        [Option('g', "zonegroup", Required = true, HelpText = "Name of the zone group - e.g. contosoweb")]
         public string ZoneGroup { get; set; }
 
         [Option('w', "write", Default = false, Required =false, HelpText = "Write to file" )]
@@ -18,7 +18,7 @@ namespace ZoneModel.Services.Options
         [Option('s', "strong", Default = false, Required = false, HelpText = "Strongly type zone ids")]
         public bool StrongType { get; set; }
 
-        [Option('r', "region", Required = false, HelpText = "")]
+        [Option('r', "region", Required = false, HelpText = "The geographic region")]
         public string Region { get; set; }
 
         [Option('e', "environment", Required = false, HelpText = "The environment name - e.g. dev or prod")]

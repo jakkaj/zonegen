@@ -1,0 +1,12 @@
+version:  '3'
+services:
+  # docker-compose run zm
+  zm:
+    image: xtellurian/zonegen:0.1 
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+    container_name: zonemodel
+    working_dir: /data
+    volumes:
+       - ./:/data
