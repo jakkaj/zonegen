@@ -1,6 +1,6 @@
 ﻿id: bank-access
 from: backend
-to: OneCloud.australiaeast.hub.bank
+to: cloud.australiaeast.hub.bank
 isBidirectional: true
 ports:
   - 22

@@ -53,3 +53,8 @@ To write out the final model, use `--write`
 Generate some sample output
 
 `dotnet run --project src\NetworkZoneModel\NetworkZoneModelCli\NetworkZoneModelCli.csproj -- sample -o output.yaml`
+
+
+## Visualise your Zone Graph
+
+Add the switch `--graphviz` to generate a nice dot graph file in `zone.graph` that you can paste in to [http://www.webgraphviz.com/](http://www.webgraphviz.com/) and see what you're building before you deploy it!
