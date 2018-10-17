@@ -339,3 +339,4 @@ Publish
 
 /zone-variables.yaml
 /zone.graph
+/.vscode/**/*
