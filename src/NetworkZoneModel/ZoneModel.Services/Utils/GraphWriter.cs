@@ -27,11 +27,11 @@ namespace ZoneModel.Services.Utils
                 foreach (var env in region.Environments)
                 {
                     envNodes.Elements.Add(env.Id);
-                    edgesTo.Connections.Add(new Connection(region.Id, env.Id, "label"));
+                    edgesTo.Connections.Add(new Connection(region.Id, env.Id, ""));
 
                     foreach (var zone in env.Zones)
                     {
-                        edgesTo.Connections.Add(new Connection(env.Id, zone.Id, "label"));
+                        edgesTo.Connections.Add(new Connection(env.Id, zone.Id, ""));
                         zoneNodes.Elements.Add(zone.Id);
                     }
 
