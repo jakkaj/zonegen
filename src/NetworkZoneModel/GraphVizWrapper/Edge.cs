@@ -38,10 +38,10 @@ namespace GraphVizWrapper
 
             if (!string.IsNullOrWhiteSpace(this._direction))
             {
-                attr.Add("direction=" + this._direction);
+                attr.Add("dir=" + this._direction);
             }
 
-            var style = string.Join("", attr);
+            var style = string.Join(", ", attr);
 
             var builder = "edge [fontname=Consolas,fontsize=10, ";
 
