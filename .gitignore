@@ -338,3 +338,5 @@ Publish
 /templates/**
 
 /zone-variables.yaml
+/zone.graph
+/.vscode/**/*

@@ -13,11 +13,13 @@ namespace ZoneModel.Services.Handlers
     {
         private IZoneModelParser _parser;
         private IFileWriter _fileWriter;
+        private readonly IGraphWriter _graphWriter;
 
-        public ParseHandler(IZoneModelParser parser, IFileWriter fileWriter)
+        public ParseHandler(IZoneModelParser parser, IFileWriter fileWriter, IGraphWriter graphWriter)
         {
             _parser = parser;
             _fileWriter = fileWriter;
+            _graphWriter = graphWriter;
         }
         public bool CanHandle(OptionResultBase command)
         {
@@ -39,6 +41,13 @@ namespace ZoneModel.Services.Handlers
                 var path = Path.Join(Directory.GetCurrentDirectory(), "zone-variables.yaml");
                 Console.WriteLine($"Creating {path}");
                 await _fileWriter.WriteAsYaml(model, path, replace: true);
+            }
+
+            if (command.Graph)
+            {
+                var path = Path.Join(Directory.GetCurrentDirectory(), "zone.graph");
+                Console.WriteLine($"Creating {path}");
+                _graphWriter.WriteGraph(model, path);
             }
         }
     }

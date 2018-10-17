@@ -15,6 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\GraphVizWrapper\GraphVizWrapper.csproj" />
 	  <ProjectReference Include="..\ZoneModel.Model\ZoneModel.Model.csproj" />
 	</ItemGroup>
 
