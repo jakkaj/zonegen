@@ -18,6 +18,9 @@ namespace ZoneModel.Services.Options
         [Option('s', "strong", Default = false, Required = false, HelpText = "Strongly type zone ids")]
         public bool StrongType { get; set; }
 
+        [Option('v', "graphviz", Default = false, Required = false, HelpText = "Strongly type zone ids")]
+        public bool Graph { get; set; }
+
         [Option('r', "region", Required = false, HelpText = "The geographic region")]
         public string Region { get; set; }
 
