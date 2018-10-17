@@ -59,4 +59,4 @@ Generate some sample output
 
 Add the switch `--graphviz` to generate a nice dot graph file in `zone.graph` that you can paste in to [http://www.webgraphviz.com/](http://www.webgraphviz.com/) and see what you're building before you deploy it!
 
-![graph](https://user-images.githubusercontent.com/5225782/47061287-8f4e7100-d21c-11e8-9654-89fa35bcc272.png)
+![graph](https://user-images.githubusercontent.com/5225782/47061333-befd7900-d21c-11e8-9add-ec483f3fcc03.png)
