@@ -25,6 +25,7 @@ namespace ZoneModel.Tests.Tests
             var g = grapher.WriteGraph(model);
 
 
+            Assert.IsNotNull(g);
 
         }
     }
