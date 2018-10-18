@@ -27,12 +27,16 @@ That's what this project does.
 
 ## Simple Config, Single Responsibility
 
-This project takes a very simple configuration layout and turns it in to a file that can then be used by "something else" to apply the configurations to a cloud. It's now Azure or AWS specific. The "something else" could be Anisble or Terraform or ARM. It doesn't matter. The responsibility of the output of this projec tis to be simple and elegant and readable. It's so simple, that we can graph the outputs with GraphViz with just a few lines of [code](https://github.com/jakkaj/zonegen/blob/master/src/NetworkZoneModel/ZoneModel.Services/Utils/GraphWriter.cs)!
+This project takes a very simple configuration layout and turns it in to a file that can then be used by "something else" to apply the configurations to a cloud. It's not Azure or AWS specific. The "something else" could be Anisble, Terraform or ARM templates. It doesn't matter. The responsibility of the output of this project is to be simple, elegant and readable. It's so simple, that we can graph the outputs with GraphViz with just a few lines of [code](https://github.com/jakkaj/zonegen/blob/master/src/NetworkZoneModel/ZoneModel.Services/Utils/GraphWriter.cs)!
 
 
 ## Getting started
 
 The idea is that you take a set of environments and zones and turn them in to a config file. You can use the docker instructions below if you do not want to have to set up a .NET Core environment on your machine. 
+
+### Clone this repository
+
+The following instructions assume you've this repository locally.
 
 ### Inititalise the sample configs
 
@@ -74,7 +78,7 @@ regions:
 
 In complex VDC systems, IP address management is a problem. Networks and zones need their addresses stored somewhere for later reference to ensure everything says sane and routable. In this system we just store the IP address once and use convention to calculated the Zone subnet ranges. 
 
-In the sample above we have two ranges - the "dev" environment and a reference to the hub we will be using. The CIDR range for the environemnt is /16. The subnet CIDR mask is /24. This is used in conjunection with the `zone.yaml` file to extract subnet ranges using the zone index offset. 
+In the sample above we have two ranges - the "dev" environment and a reference to the hub we will be using. The CIDR range for the environemnt is /16. The subnet CIDR mask is /24. This is used in conjunction with the `zone.yaml` file to extract subnet ranges using the zone index offset. 
 
 ### Zones
 
