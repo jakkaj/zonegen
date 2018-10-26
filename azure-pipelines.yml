@@ -51,6 +51,7 @@ steps:
 
 - task: Docker@1
   displayName: 'Push image to registry'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   inputs:
     command: 'push'
     imageName: '$imageName'
