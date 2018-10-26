@@ -44,6 +44,7 @@ steps:
 
 - task: Docker@1
   displayName: 'Login to DockerHub'
+  # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   inputs:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: '$(dockerhubRegistryEndpoint)'
@@ -51,7 +52,7 @@ steps:
 
 - task: Docker@1
   displayName: 'Push image to registry'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   inputs:
     command: 'push'
     imageName: '$imageName'
