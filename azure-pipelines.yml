@@ -10,6 +10,10 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  imageName: 'xtellurian/zonegen:$(build.buildId)'
+  dockerfilePath: 'src/NetworkZoneModel/Dockerfile'
+  dockerContext: 'src/NetworkZoneModel'
+  dockerhubRegistryEndpoint: 'riandockerhub'  # set in Azure DevOps
 
 steps:
 - task: NuGetToolInstaller@0
@@ -28,3 +32,25 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: Docker@1
+  displayName: 'Build docker image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: '$(dockerhubRegistryEndpoint)'
+    dockerFile: '$(dockerfilePath)'
+    useDefaultContext: false
+    buildContext: '$(dockerContext)'
+
+- task: Docker@1
+  displayName: 'Login to DockerHub'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: '$(dockerhubRegistryEndpoint)'
+    command: login
+
+- task: Docker@1
+  displayName: 'Push image to registry'
+  inputs:
+    command: 'push'
+    imageName: '$imageName'
